@@ -24,7 +24,6 @@ int main() {
     cout<<name<<endl;
     cout<<flag<<endl;
 
-
     return 0;
 
 }
