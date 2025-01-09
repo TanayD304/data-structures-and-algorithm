@@ -33,6 +33,20 @@ class sorting {
 
         return nums;
     }
+
+    public static int[] bubbleSort(int[] nums) {
+        int size = nums.length;
+
+        for(int i=0;i<size-1;i++) {
+            for(int j=0;j<size-1-i;j++) {
+                if(nums[j]>nums[j+1]) {
+                    swap(nums, j, j+1);
+                }
+            }
+        }
+
+        return nums;
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -43,7 +57,8 @@ class sorting {
 
         printArray(nums);
         // function calls
-        nums = selectionSort(nums);
+        // nums = selectionSort(nums);
+        // nums = bubbleSort(nums);
 
         printArray(nums);
     }

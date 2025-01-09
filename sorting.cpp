@@ -29,6 +29,21 @@ vector<int> selectionSort(vector<int> &nums)
     return nums;
 }
 
+vector<int> bubbleSort(vector<int> &nums)
+{
+    int size = nums.size();
+
+    for(int i=0;i<size-1;i++) {
+        for(int j=0;j<size-1-i;j++) {
+            if(nums[j]>nums[j+1]) {
+                swap(nums[j], nums[j+1]);
+            }
+        }
+    }
+
+    return nums;
+}
+
 int main() {
     int n;
     cin>>n;
@@ -39,6 +54,7 @@ int main() {
     printArray(nums);
     // function calls
     // nums = selectionSort(nums);
+    nums = bubbleSort(nums);
 
     printArray(nums);
 }
