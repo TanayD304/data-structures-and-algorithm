@@ -2,11 +2,36 @@
 import java.util.*;
 
 class sorting {
+    public static void swap(int[]nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
+    }
+
     public static void printArray(int[] nums) {
         for(int i=0;i<nums.length;i++) {
             System.out.print(nums[i] + " ");
         }
         System.out.println();
+    }
+
+    public static int[] selectionSort(int[] nums) {
+        int minInd;
+        int size = nums.length;
+
+        for(int i=0;i<size-1;i++) {
+            minInd = i;
+
+            for(int j=i;j<size;j++) {
+                if(nums[minInd]>nums[j]) {
+                    minInd = j;
+                }
+            }
+
+            swap(nums, i, minInd);
+        }
+
+        return nums;
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -18,6 +43,7 @@ class sorting {
 
         printArray(nums);
         // function calls
+        nums = selectionSort(nums);
 
         printArray(nums);
     }
