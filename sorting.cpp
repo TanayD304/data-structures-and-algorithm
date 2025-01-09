@@ -44,6 +44,30 @@ vector<int> bubbleSort(vector<int> &nums)
     return nums;
 }
 
+vector<int> insertionSort(vector<int> &nums)
+{
+    int size = nums.size();
+    int temp;
+    int pos;
+
+    for(int i=1;i<size;i++) {
+        pos = i-1;
+        temp = nums[i];
+
+        while(pos>=0 && nums[pos]>temp) {
+            nums[pos+1] = nums[pos];
+            pos--;
+        }
+
+        pos++;
+
+        nums[pos] = temp;
+
+    }
+
+    return nums;
+}
+
 int main() {
     int n;
     cin>>n;
@@ -54,7 +78,8 @@ int main() {
     printArray(nums);
     // function calls
     // nums = selectionSort(nums);
-    nums = bubbleSort(nums);
+    // nums = bubbleSort(nums);
+    // nums = insertionSort(nums);
 
     printArray(nums);
 }
