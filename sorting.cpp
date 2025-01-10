@@ -124,6 +124,38 @@ vector<int> mergeSort(vector<int> &nums)
     return nums;
 }
 
+int findPartitionIndex(vector<int> &nums, int low, int high) {
+    int pivot = low;
+    int i = low;
+    int j = high;
+
+    while(i<j) {
+        while(nums[i]<=nums[pivot] && i<high) i++;
+        while(nums[j]>nums[pivot] && j>low) j--;
+        if(i<j) swap(nums[i], nums[j]);
+    }
+    swap(nums[low], nums[j]);
+    return j;
+}
+
+void recursion(vector<int> &nums, int low, int high)
+{
+    // base
+    if(low>=high) return;
+
+    // recursion
+    int partition = findPartitionIndex(nums,low,high);
+    recursion(nums, low, partition-1);
+    recursion(nums, partition+1, high);
+}
+
+vector<int> quickSort(vector<int> &nums)
+{
+    recursion(nums, 0, nums.size()-1);
+
+    return nums;
+}
+
 int main() {
     int n;
     cin>>n;
@@ -133,10 +165,10 @@ int main() {
     }
     printArray(nums);
     // function calls
-    // nums = selectionSort(nums);
-    // nums = bubbleSort(nums);
-    // nums = insertionSort(nums);
-    // nums = mergeSort(nums);
-    // nums = quickSort(nums);
+    nums = selectionSort(nums);
+    nums = bubbleSort(nums);
+    nums = insertionSort(nums);
+    nums = mergeSort(nums);
+    nums = quickSort(nums);
     printArray(nums);
 }

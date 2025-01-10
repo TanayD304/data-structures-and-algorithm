@@ -124,6 +124,42 @@ class sorting {
         return nums;
     }
 
+    public static int findPartitionIndex(int[] nums, int low, int high) {
+        int pivot = low;
+        int i = low;
+        int j = high;
+
+        while(i<j) {
+            while (nums[i] <= nums[pivot] && i < high) {
+                i++;
+            }
+            while (nums[j] > nums[pivot] && j > low) {
+                j--;
+            }
+            if (i < j) swap(nums, i, j);
+        }
+        swap(nums, low, j);
+        return j;
+    }
+
+    public static void recursion(int[] nums, int low, int high) {
+        // base
+        if (low >= high) {
+            return;
+        }
+
+        // recursion
+        int partition = findPartitionIndex(nums, low, high);
+        recursion(nums, low, partition - 1);
+        recursion(nums, partition + 1, high);
+    }
+
+    public static int[] quickSort(int[] nums) {
+        recursion(nums, 0, nums.length-1);
+
+        return nums;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -134,11 +170,11 @@ class sorting {
 
         printArray(nums);
         // function calls
-        // nums = selectionSort(nums);
-        // nums = bubbleSort(nums);
-        // nums = insertionSort(nums);
-        // nums = mergeSort(nums);
-        // nums = quickSort(nums);
+        nums = selectionSort(nums);
+        nums = bubbleSort(nums);
+        nums = insertionSort(nums);
+        nums = mergeSort(nums);
+        nums = quickSort(nums);
         printArray(nums);
     }
 }
