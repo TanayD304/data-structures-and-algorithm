@@ -70,6 +70,60 @@ class sorting {
         return nums;
     }
 
+    public static void merge(int[] nums, int start, int end, int mid) {
+        int[] temp = new int[end-start+1];
+        int tempPos = 0;
+        int i = start;
+        int j = mid + 1;
+
+        // placing elements in sorted order
+        while (i <= mid && j <= end) {
+            if (nums[i] < nums[j]) {
+                temp[tempPos++] = nums[i++];
+            } else {
+                temp[tempPos++] = nums[j++];
+            }
+        }
+
+        // leftover from left
+        while (i <= mid) {
+            temp[tempPos++] = nums[i++];
+        }
+
+        // leftover from right
+        while (j <= end) {
+            temp[tempPos++] = nums[j++];
+        }
+
+        // copy back
+        int numsPos = start;
+        for (i = 0; i < temp.length; i++) {
+            nums[numsPos++] = temp[i];
+        }
+    }
+
+    public static void divide(int[] nums, int start, int end) {
+        // base case
+        if(start>=end) return;
+
+        // recursive
+        int mid = (start+end)/2;
+
+        // left half
+        divide(nums, start, mid);
+        // right half
+        divide(nums, mid+1, end);
+
+        // merge call
+        merge(nums, start, end, mid);
+    }
+
+    public static int[] mergeSort(int[] nums) {
+        divide(nums, 0, nums.length-1);
+
+        return nums;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -83,7 +137,8 @@ class sorting {
         // nums = selectionSort(nums);
         // nums = bubbleSort(nums);
         // nums = insertionSort(nums);
-
+        // nums = mergeSort(nums);
+        // nums = quickSort(nums);
         printArray(nums);
     }
 }

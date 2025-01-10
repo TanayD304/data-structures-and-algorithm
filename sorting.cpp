@@ -68,6 +68,62 @@ vector<int> insertionSort(vector<int> &nums)
     return nums;
 }
 
+void merge(vector<int> &nums, int start, int end, int mid) {
+    // temp array
+    vector<int> temp(end-start+1);
+    int tempPos = 0;
+    int i = start;
+    int j = mid+1;
+
+    // placing elements in sorted order
+    while(i<=mid && j<=end) {
+        if(nums[i]<nums[j]) {
+            temp[tempPos++]=nums[i++];
+        } else {
+            temp[tempPos++] = nums[j++];
+        }
+    }
+
+    // leftover from left
+    while(i<=mid) {
+        temp[tempPos++] = nums[i++];
+    }
+
+    // leftover from right
+    while(j<=end) {
+        temp[tempPos++] = nums[j++];
+    }
+
+    // copy back
+    int numsPos = start;
+    for(int i=0;i<temp.size();i++) {
+        nums[numsPos++] = temp[i];
+    }
+}
+void divide(vector<int> &nums, int start, int end) {
+    // base
+    if(start>=end) return;
+
+    // recursive
+    int mid = (start + end)/2;
+
+    // left half
+    divide(nums, start, mid);
+    // right half
+    divide(nums, mid+1, end);
+
+    // merge call
+    merge(nums, start, end, mid);
+}
+
+
+vector<int> mergeSort(vector<int> &nums)
+{
+    divide(nums, 0, nums.size()-1);
+
+    return nums;
+}
+
 int main() {
     int n;
     cin>>n;
@@ -80,6 +136,7 @@ int main() {
     // nums = selectionSort(nums);
     // nums = bubbleSort(nums);
     // nums = insertionSort(nums);
-
+    // nums = mergeSort(nums);
+    // nums = quickSort(nums);
     printArray(nums);
 }
