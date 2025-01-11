@@ -91,6 +91,36 @@ bool isArmstrong(int n)
     return ans == temp;
 }
 
+bool isPerfectBf(int n)
+{
+    if (n == 1)
+        return false;
+    int ans = 1;
+    for (int i = 2; i < n; i++)
+    {
+        if (n % i == 0)
+            ans += i;
+    }
+    return ans == n;
+}
+
+bool isPerfectOt(int n)
+{
+    if (n == 1)
+        return false;
+    int ans = 1;
+    for (int i = 2; i < n; i++)
+    {
+        if (n % i == 0)
+        {
+            ans += i;
+            if (n / i != i)
+                ans += n / i;
+        }
+    }
+    return ans == n;
+}
+
 int main()
 {
     int n;
@@ -102,6 +132,7 @@ int main()
     // cout<<isPalindrome(n);
     // cout<<largestDigit(n);
     // cout<<factorial(n);
-    cout<<isArmstrong(n);
+    // cout<<isArmstrong(n);
+    cout<<isPerfect(n);
     return 0;
 }

@@ -74,6 +74,29 @@ class basicMaths {
         return ans==temp;
     }
 
+    public static boolean isPerfectBf(int n) {
+        if (n == 1)
+            return false;
+        int ans = 1;
+        for(int i=2;i<n;i++) {
+            if(n%i==0) ans+=i;
+        }
+        return ans==n;
+    }
+
+    public static boolean isPerfectOt(int n) {
+        if (n == 1)
+            return false;
+        int ans = 1;
+        for(int i=2;i*i<=n;i++) {
+            if(n%i==0) {
+                ans+=i;
+                if(n/i!=i) ans+=n/i;
+            }
+        }
+        return ans==n;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -84,6 +107,7 @@ class basicMaths {
         // System.out.println(isPalindrome(n));
         // System.out.println(largestDigit(n));
         // System.out.println(factorial(n));
-        System.out.println(isArmstrong(n));
+        // System.out.println(isArmstrong(n));
+        System.out.println(isPerfect(n));
     }
 }
