@@ -1,4 +1,3 @@
-import java.util.*;
 class basicMaths {
     public static int countDigit(int n) {
         int ans = 0;
@@ -97,17 +96,27 @@ class basicMaths {
         return ans==n;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+    public static boolean isPrime(int n) {
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-        // System.out.println(countDigit(n));
-        // System.out.println(countOddDigit(n));
-        // System.out.println(reverseNumber(n));
-        // System.out.println(isPalindrome(n));
-        // System.out.println(largestDigit(n));
-        // System.out.println(factorial(n));
-        // System.out.println(isArmstrong(n));
-        System.out.println(isPerfect(n));
+    public static int primeUptoN(int n) {
+        int ans = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime(n)) {
+                ans++;
+            }
+        }
+
+        return ans;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

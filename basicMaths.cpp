@@ -121,18 +121,27 @@ bool isPerfectOt(int n)
     return ans == n;
 }
 
+bool isPrime(int n)
+{
+    for (int i = 2; i*i <= n; i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int primeUptoN(int n)
+{
+    int ans = 0;
+    for(int i=2;i<=n;i++) {
+        if(isPrime(n)) ans++;
+    }
+
+    return ans;
+}
+
 int main()
 {
-    int n;
-    cin>>n;
-
-    // cout<<countDigit(n);
-    // cout<<countOddDigit(n);
-    // cout<<reverseNumber(n);
-    // cout<<isPalindrome(n);
-    // cout<<largestDigit(n);
-    // cout<<factorial(n);
-    // cout<<isArmstrong(n);
-    cout<<isPerfect(n);
     return 0;
 }
