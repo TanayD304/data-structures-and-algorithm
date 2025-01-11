@@ -62,6 +62,21 @@ int largestDigit(int n)
     return largest;
 }
 
+int factorial(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+
+    int ans = 1;
+    while (n > 1)
+    {
+        ans *= n;
+        n--;
+    }
+
+    return ans;
+}
+
 int main()
 {
     int n;
@@ -71,6 +86,7 @@ int main()
     // cout<<countOddDigit(n);
     // cout<<reverseNumber(n);
     // cout<<isPalindrome(n);
-    cout<<largestDigit(n);
+    // cout<<largestDigit(n);
+    cout<<factorial(n);
     return 0;
 }

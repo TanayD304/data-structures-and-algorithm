@@ -50,6 +50,18 @@ class basicMaths {
         return largest;
     }
 
+    public static int factorial(int n) {
+        if(n==0 || n==1) return 1;
+
+        int ans = 1;
+        while(n>1) {
+            ans*=n;
+            n--;
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -58,6 +70,7 @@ class basicMaths {
         // System.out.println(countOddDigit(n));
         // System.out.println(reverseNumber(n));
         // System.out.println(isPalindrome(n));
-        System.out.println(largestDigit(n));
+        // System.out.println(largestDigit(n));
+        System.out.println(factorial(n));
     }
 }
