@@ -27,12 +27,35 @@ int countOddDigit(int n)
     return ans;
 }
 
+int reverseNumber(int n)
+{
+    int newNum = 0;
+
+    while (n > 0)
+    {
+        newNum *= 10;
+        newNum += n % 10;
+        n /= 10;
+    }
+
+    return newNum;
+}
+
+bool isPalindrome(int n)
+{
+    int revNum = reverseNumber(n);
+
+    return n == revNum;
+}
+
 int main()
 {
     int n;
     cin>>n;
 
     // cout<<countDigit(n);
-    cout<<countOddDigit(n);
+    // cout<<countOddDigit(n);
+    // cout<<reverseNumber(n);
+    cout<<isPalindrome(n);
     return 0;
 }
