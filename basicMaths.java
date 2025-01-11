@@ -39,6 +39,17 @@ class basicMaths {
         return n==revNum;
     }
 
+    public static int largestDigit(int n) {
+        int largest = 0;
+
+        while(n>0) {
+            if(largest<n%10) largest = n%10;
+            n/=10;
+        }
+
+        return largest;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -46,6 +57,7 @@ class basicMaths {
         // System.out.println(countDigit(n));
         // System.out.println(countOddDigit(n));
         // System.out.println(reverseNumber(n));
-        System.out.println(isPalindrome(n));
+        // System.out.println(isPalindrome(n));
+        System.out.println(largestDigit(n));
     }
 }

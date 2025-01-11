@@ -48,6 +48,20 @@ bool isPalindrome(int n)
     return n == revNum;
 }
 
+int largestDigit(int n)
+{
+    int largest = 0;
+
+    while (n > 0)
+    {
+        if (largest < n % 10)
+            largest = n % 10;
+        n /= 10;
+    }
+
+    return largest;
+}
+
 int main()
 {
     int n;
@@ -56,6 +70,7 @@ int main()
     // cout<<countDigit(n);
     // cout<<countOddDigit(n);
     // cout<<reverseNumber(n);
-    cout<<isPalindrome(n);
+    // cout<<isPalindrome(n);
+    cout<<largestDigit(n);
     return 0;
 }
