@@ -77,6 +77,20 @@ int factorial(int n)
     return ans;
 }
 
+bool isArmstrong(int n)
+{
+    int len = countDigit(n);
+    int temp = n;
+    int ans = 0;
+    while (n > 0)
+    {
+        ans += pow(n % 10, len);
+        n /= 10;
+    }
+
+    return ans == temp;
+}
+
 int main()
 {
     int n;
@@ -87,6 +101,7 @@ int main()
     // cout<<reverseNumber(n);
     // cout<<isPalindrome(n);
     // cout<<largestDigit(n);
-    cout<<factorial(n);
+    // cout<<factorial(n);
+    cout<<isArmstrong(n);
     return 0;
 }

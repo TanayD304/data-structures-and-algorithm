@@ -62,6 +62,18 @@ class basicMaths {
         return ans;
     }
 
+    public static boolean isArmstrong(int n) {
+        int len = countDigit(n);
+        int temp = n;
+        int ans = 0;
+        while(n>0) {
+            ans+=Math.pow(n%10, len);
+            n/=10;
+        }
+
+        return ans==temp;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -71,6 +83,7 @@ class basicMaths {
         // System.out.println(reverseNumber(n));
         // System.out.println(isPalindrome(n));
         // System.out.println(largestDigit(n));
-        System.out.println(factorial(n));
+        // System.out.println(factorial(n));
+        System.out.println(isArmstrong(n));
     }
 }
