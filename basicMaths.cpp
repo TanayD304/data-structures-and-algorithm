@@ -141,6 +141,49 @@ int primeUptoN(int n)
     return ans;
 }
 
+int GCDBetter(int n1, int n2)
+{
+    int range = min(n1, n2);
+    int largest = 1;
+    for(int i=2;i<=range;i++) {
+        if(n1%i==0 && n2%i==0) largest = i;
+    }
+
+    return largest;
+}
+
+int GCDBf(int n1, int n2)
+{
+    int range = min(n1, n2);
+    for(int i=range;i>1;i--) {
+        if(n1%i==0 && n2%i==0) return i;
+    }
+
+    return 1;
+}
+
+int GCD(int n1, int n2)
+{
+    while(n1>0 && n2>0) {
+        if(n1>n2) n1 = n1%n2;
+        else n2 = n2%n1;
+    }
+
+    if(n1==0) return n2;
+    return n1;
+}
+
+int LCM(int n1, int n2)
+{
+    return n1*n2/GCD(n1, n2);
+}
+
+vector<int> divisors(int n)
+{
+    vector<int>
+    for(int i)
+}
+
 int main()
 {
     return 0;
