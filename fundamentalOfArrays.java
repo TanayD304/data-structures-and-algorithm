@@ -17,8 +17,28 @@ class fundamentalOfArrays {
     // }
     // public int secondLargestElement(int[] nums) {
     // }
-    // public int findMaxConsecutiveOnes(int[] nums) {
-    // }
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int size = nums.length;
+
+        int maxi = 0;
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (nums[i] == 1) {
+                count++;
+            } else {
+                if (maxi < count) {
+                    maxi = count;
+                }
+                count = 0;
+            }
+        }
+
+        if (maxi < count) {
+            maxi = count;
+        }
+
+        return maxi;
+    }
     public static void rotateArrayByOne(int[] nums) {
         int size = nums.length;
 
@@ -97,10 +117,10 @@ class fundamentalOfArrays {
         // printArray(nums);
 
         // Rotate array to left by k
-        printArray(nums);
+        // printArray(nums);
         // rotateArrayBruteForce(nums, 2);
         // rotateArrayBetter(nums, 2);
-        rotateArray(nums, 2);
-        printArray(nums);
+        // rotateArray(nums, 2);
+        // printArray(nums);
     }
 }
