@@ -14,9 +14,27 @@ class fundamentalOfArrays {
     // public int linearSearch(int nums[], int target) {
     //     //Your code goes here
     // }
-    // public int largestElement(int[] nums) {
-    // }
-    public int secondLargestElementBruteForce(int[] nums) {
+    
+    public static int largestElementBruteForce(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length-1];
+    }
+
+    public static int largestElement(int[] nums) {
+        int size = nums.length;
+
+        int lar = nums[0];
+
+        for (int i = 1; i < size; i++) {
+            if (lar < nums[i]) {
+                lar = nums[i];
+            }
+        }
+
+        return lar;
+    }
+
+    public static int secondLargestElementBruteForce(int[] nums) {
         int size = nums.length;
         Arrays.sort(nums);
 
@@ -31,7 +49,7 @@ class fundamentalOfArrays {
         return -1;
     }
 
-    public int secondLargestElement(int[] nums) {
+    public static int secondLargestElement(int[] nums) {
         int size = nums.length;
         int lar = -1;
         int lar2 = -1;
@@ -48,7 +66,7 @@ class fundamentalOfArrays {
         return lar2;
     }
 
-    public int findMaxConsecutiveOnes(int[] nums) {
+    public static int findMaxConsecutiveOnes(int[] nums) {
         int size = nums.length;
 
         int maxi = 0;
@@ -70,7 +88,7 @@ class fundamentalOfArrays {
 
         return maxi;
     }
-    
+
     public static void rotateArrayByOne(int[] nums) {
         int size = nums.length;
 

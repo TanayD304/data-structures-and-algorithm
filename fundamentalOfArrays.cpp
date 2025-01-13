@@ -16,9 +16,27 @@ void printArray(vector<int> &nums)
 //     // your code goes here
 // }
 
-// int largestElement(vector<int> &nums)
-// {
-// }
+int largestElementBruteForce(vector<int> &nums)
+{
+    sort(nums.begin(), nums.end());
+
+    return nums[nums.size()-1];
+}
+
+int largestElement(vector<int> &nums)
+{
+    int size = nums.size();
+
+    int lar = nums[0];
+
+    for(int i=1;i<size;i++) {
+        if(lar<nums[i]) {
+            lar = nums[i];
+        }
+    }
+
+    return lar;
+}
 
 int secondLargestElementBruteForce(vector<int> &nums)
 {
