@@ -20,10 +20,43 @@ void printArray(vector<int> &nums)
 // {
 // }
 
-// int secondLargestElement(vector<int> &nums)
-// {
-//     // your code goes here
-// }
+int secondLargestElementBruteForce(vector<int> &nums)
+{
+    sort(nums.begin(), nums.end());
+
+    int size = nums.size();
+
+    int i = size-2;
+    while(i>=0) {
+        if(nums[size-1]!=nums[i]) return nums[i];
+        i--;
+    }
+
+    return -1;
+
+}
+
+int secondLargestElement(vector<int> &nums)
+{
+    int size = nums.size();
+    int lar = -1;
+    int lar2 = -1;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] > lar)
+        {
+            lar2 = lar;
+            lar = nums[i];
+        }
+        else if (nums[i] > lar2 && nums[i] != lar)
+        {
+            lar2 = nums[i];
+        }
+    }
+
+    return lar2;
+}
 
 int findMaxConsecutiveOnes(vector<int> &nums)
 {

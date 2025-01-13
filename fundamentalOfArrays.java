@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.util.Arrays;
 
 class fundamentalOfArrays {
 
@@ -15,8 +16,38 @@ class fundamentalOfArrays {
     // }
     // public int largestElement(int[] nums) {
     // }
-    // public int secondLargestElement(int[] nums) {
-    // }
+    public int secondLargestElementBruteForce(int[] nums) {
+        int size = nums.length;
+        Arrays.sort(nums);
+
+        int i = size - 2;
+        while (i >= 0) {
+            if (nums[size - 1] != nums[i]) {
+                return nums[i];
+            }
+            i--;
+        }
+
+        return -1;
+    }
+
+    public int secondLargestElement(int[] nums) {
+        int size = nums.length;
+        int lar = -1;
+        int lar2 = -1;
+
+        for (int i = 0; i < size; i++) {
+            if (nums[i] > lar) {
+                lar2 = lar;
+                lar = nums[i];
+            } else if (nums[i] > lar2 && nums[i] != lar) {
+                lar2 = nums[i];
+            }
+        }
+
+        return lar2;
+    }
+
     public int findMaxConsecutiveOnes(int[] nums) {
         int size = nums.length;
 
@@ -39,6 +70,7 @@ class fundamentalOfArrays {
 
         return maxi;
     }
+    
     public static void rotateArrayByOne(int[] nums) {
         int size = nums.length;
 
