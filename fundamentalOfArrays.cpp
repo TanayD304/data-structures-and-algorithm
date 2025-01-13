@@ -11,10 +11,16 @@ void printArray(vector<int> &nums)
     cout << endl;
 }
 
-// int linearSearch(vector<int> &nums, int target)
-// {
-//     // your code goes here
-// }
+int linearSearch(vector<int> &nums, int target)
+{
+    int size = nums.size();
+
+    for(int i=0;i<size;i++) {
+        if(nums[i]==target) return i;
+    }
+
+    return -1;
+}
 
 int largestElementBruteForce(vector<int> &nums)
 {

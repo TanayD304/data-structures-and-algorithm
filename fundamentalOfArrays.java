@@ -11,10 +11,18 @@ class fundamentalOfArrays {
         System.out.println();
     }
 
-    // public int linearSearch(int nums[], int target) {
-    //     //Your code goes here
-    // }
-    
+    public static int linearSearch(int nums[], int target) {
+        int size = nums.length;
+
+        for (int i = 0; i < size; i++) {
+            if (nums[i] == target) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public static int largestElementBruteForce(int[] nums) {
         Arrays.sort(nums);
         return nums[nums.length-1];
