@@ -194,6 +194,20 @@ int main()
         cin >> nums[i];
     }
 
+    // linear Search
+    // int target;
+    // cin>>target;
+    // cout<<linearSearch(nums, target);
+
+    // largest Element
+    // cout<<largestElement(nums);
+
+    // Second Largest Element
+    // cout<<secondLargestElement(nums);
+
+    // Max Consecutive Element
+    // cout<<findMaxConsecutiveOnes(nums);
+
     // Rotate array to left by 1
     // printArray(nums);
     // rotateArrayByOne(nums);

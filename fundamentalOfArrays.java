@@ -169,6 +169,19 @@ class fundamentalOfArrays {
             nums[i] = scanner.nextInt();
         }
 
+        // linear Search
+        // int target = scanner.nextInt();
+        // System.out.println(linearSearch(nums, target));
+
+        // largest Element
+        // System.out.println(largestElement(nums));
+
+        // Second Largest Element
+        // System.out.println(secondLargestElement(nums));
+
+        // Max Consecutive Element
+        // System.out.println(findMaxConsecutiveOnes(nums));
+
         // Rotate array to left by 1
         // printArray(nums);
         // rotateArrayByOne(nums);
