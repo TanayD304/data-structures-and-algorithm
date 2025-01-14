@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Arrays;
 class basicStrings {
     public static void swapChars(Vector<Character> s, int i, int j) {
         char temp = s.get(i);
@@ -50,6 +51,25 @@ class basicStrings {
 
         return s.substring(i, j+1);
     }
+    public static String longestCommonPrefix(String[] str) {
+        Arrays.sort(str);
+
+        int maxLCPLength = Math.min(str[0].length(), str[str.length-1].length());
+
+        String ans = "";
+
+        int i = 0;
+        while(i<maxLCPLength) {
+            if(str[0].charAt(i)==str[str.length - 1].charAt(i)) {
+                ans+=str[0].charAt(i);
+            }
+            else {
+                return ans;
+            }
+            i++;
+        }
+        return ans;
+    }
     public static void main(String[] args) {
         // Reverse a string
         // Vector<Character> s = new Vector<>();
@@ -69,11 +89,23 @@ class basicStrings {
         // System.out.println(palindromeCheck(s));
 
         // Largest odd number in a string
-        String s = "5347";
-        System.out.println(largeOddNum(s));
-        s = "0214638";
-        System.out.println(largeOddNum(s));
-        s = "0032579";
-        System.out.println(largeOddNum(s));
+        // String s = "5347";
+        // System.out.println(largeOddNum(s));
+        // s = "0214638";
+        // System.out.println(largeOddNum(s));
+        // s = "0032579";
+        // System.out.println(largeOddNum(s));
+
+        String[] str = new String[4];
+        str[0] = "flowers";
+        str[1] = "flow";
+        str[2] = "fly";
+        str[3] = "flight";
+        System.out.println(longestCommonPrefix(str));
+        str[0] = "dog";
+        str[1] = "cat";
+        str[2] = "monkey";
+        str[3] = "animal";
+        System.out.println(longestCommonPrefix(str));
     }
 }

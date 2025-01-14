@@ -14,9 +14,10 @@ void printArray(vector<char> &nums)
 void reverseString(vector<char> &s)
 {
     int start = 0;
-    int end = s.size()-1;
+    int end = s.size() - 1;
 
-    while(start<end) {
+    while (start < end)
+    {
         swap(s[start++], s[end--]);
     }
 }
@@ -28,7 +29,8 @@ bool palindromeCheck(string &s)
 
     while (start < end)
     {
-        if(s[start++]!=s[end--]) return false;
+        if (s[start++] != s[end--])
+            return false;
     }
 
     return true;
@@ -36,10 +38,12 @@ bool palindromeCheck(string &s)
 
 string largeOddNum(string &s)
 {
-    int j = s.size()-1;
+    int j = s.size() - 1;
 
-    while(j>=0) {
-        if (s[j] == '1' || s[j] == '3' || s[j] == '5' || s[j] == '7' || s[j] == '9') {
+    while (j >= 0)
+    {
+        if (s[j] == '1' || s[j] == '3' || s[j] == '5' || s[j] == '7' || s[j] == '9')
+        {
             break;
         }
         j--;
@@ -47,14 +51,41 @@ string largeOddNum(string &s)
 
     int i = 0;
 
-    while(i<s.size()) {
-        if(s[i]!='0') {
+    while (i < s.size())
+    {
+        if (s[i] != '0')
+        {
             break;
         }
         i++;
     }
 
-    return s.substr(i, j-i+1);
+    return s.substr(i, j - i + 1);
+}
+
+string longestCommonPrefix(vector<string> &str)
+{
+    sort(str.begin(), str.end());
+
+    int maxLCPLength = min(str[0].size(), str[str.size() - 1].size());
+
+    int i = 0;
+    string ans = "";
+
+    while (i < maxLCPLength)
+    {
+        if (str[0][i] == str[str.size() - 1][i])
+        {
+            ans += str[0][i];
+        }
+        else
+        {
+            return ans;
+        }
+        i++;
+    }
+
+    return ans;
 }
 
 int main()
@@ -72,11 +103,22 @@ int main()
     // cout<<palindromeCheck(s)<<endl;
 
     // Largest odd number in a string
-    string s = "5347";
-    cout<<largeOddNum(s)<<endl;
-    s = "0214638";
-    cout<<largeOddNum(s)<<endl;
-    s = "0032579";
-    cout<<largeOddNum(s)<<endl;
+    // string s = "5347";
+    // cout<<largeOddNum(s)<<endl;
+    // s = "0214638";
+    // cout<<largeOddNum(s)<<endl;
+    // s = "0032579";
+    // cout<<largeOddNum(s)<<endl;
+
+    vector<string> s = {"flowers",
+                        "flow",
+                        "fly",
+                        "flight"};
+    cout << longestCommonPrefix(s) << endl;
+    vector<string> s1 = {"dog",
+                         "cat",
+                         "animal",
+                         "monkey"};
+    cout << longestCommonPrefix(s1) << endl;
     return 0;
 }
