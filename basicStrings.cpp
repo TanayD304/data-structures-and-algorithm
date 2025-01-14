@@ -110,6 +110,23 @@ bool rotateString(string &s, string &goal)
     return false;
 }
 
+bool anagramStrings(string &s, string t)
+{
+    vector<int> freqS(26, 0);
+    vector<int> freqT(26, 0);
+
+    for(int i=0;i<s.size();i++) {
+        freqS[s[i]-97]++;
+        freqT[t[i]-97]++;
+    }
+
+    for(int i=0;i<26;i++) {
+        if(freqS[i]!=freqT[i]) return false;
+    }
+
+    return true;
+}
+
 int main()
 {
     // Reverse a string
@@ -154,11 +171,19 @@ int main()
     // cout<<isomorphicString(s, t)<<endl;
 
     // Rotate String
-    string s = "abcde";
-    string t = "cdeab";
-    cout<<rotateString(s, t)<<endl;
-    s = "abcde";
-    t = "adeac";
-    cout<<rotateString(s, t)<<endl;
+    // string s = "abcde";
+    // string t = "cdeab";
+    // cout<<rotateString(s, t)<<endl;
+    // s = "abcde";
+    // t = "adeac";
+    // cout<<rotateString(s, t)<<endl;
+
+    // Valid Anagram
+    string s = "anagram";
+    string t = "naagram";
+    cout<<anagramStrings(s, t)<<endl;
+    s = "cat";
+    t = "dog";
+    cout<<anagramStrings(s, t)<<endl;
     return 0;
 }
