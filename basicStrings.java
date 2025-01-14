@@ -84,6 +84,11 @@ class basicStrings {
 
         return true;
     }
+
+    public static boolean rotateString(String s, String goal) {
+        s = s+s;
+        return s.contains(goal);
+    }
     public static void main(String[] args) {
         // Reverse a string
         // Vector<Character> s = new Vector<>();
@@ -124,13 +129,21 @@ class basicStrings {
         // System.out.println(longestCommonPrefix(str));
 
         // Isomorphic String
-        String s = "add";
-        String t = "egg";
+        // String s = "add";
+        // String t = "egg";
 
-        System.out.println(isomorphicString(s, t));
+        // System.out.println(isomorphicString(s, t));
 
-        s = "apple";
-        t = "bbnbm";
-        System.out.println(isomorphicString(s, t));
+        // s = "apple";
+        // t = "bbnbm";
+        // System.out.println(isomorphicString(s, t));
+
+        // Rotate String
+        String s = "abcde";
+        String t = "cdeab";
+        System.out.println(rotateString(s, t));
+        s = "abcde";
+        t = "adeac";
+        System.out.println(rotateString(s, t));
     }
 }

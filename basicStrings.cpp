@@ -103,6 +103,13 @@ bool isomorphicString(string s, string t)
     return true;
 }
 
+bool rotateString(string &s, string &goal)
+{
+    s = s+s;
+    if(s.find(goal)!=string::npos) return true;
+    return false;
+}
+
 int main()
 {
     // Reverse a string
@@ -138,12 +145,20 @@ int main()
     // cout << longestCommonPrefix(s1) << endl;
 
     // Isomorphic String
-    string s = "add";
-    string t = "egg";
-    cout<<isomorphicString(s, t)<<endl;
+    // string s = "add";
+    // string t = "egg";
+    // cout<<isomorphicString(s, t)<<endl;
 
-    s = "apple";
-    t = "bbnbm";
-    cout<<isomorphicString(s, t)<<endl;
+    // s = "apple";
+    // t = "bbnbm";
+    // cout<<isomorphicString(s, t)<<endl;
+
+    // Rotate String
+    string s = "abcde";
+    string t = "cdeab";
+    cout<<rotateString(s, t)<<endl;
+    s = "abcde";
+    t = "adeac";
+    cout<<rotateString(s, t)<<endl;
     return 0;
 }
