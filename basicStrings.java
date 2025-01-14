@@ -29,6 +29,27 @@ class basicStrings {
 
         return true;
     }
+    public static String largeOddNum(String s) {
+        int j = s.length()-1;
+
+        while(j>=0) {
+            if(s.charAt(j)=='1'||s.charAt(j) == '3'||s.charAt(j) == '5'||s.charAt(j) == '7'||s.charAt(j) == '9') {
+                break;
+            }
+            j--;
+        }
+
+        int i = 0;
+
+        while(i<s.length()) {
+            if(s.charAt(i) != '0') {
+                break;
+            }
+            i++;
+        }
+
+        return s.substring(i, j+1);
+    }
     public static void main(String[] args) {
         // Reverse a string
         // Vector<Character> s = new Vector<>();
@@ -42,9 +63,17 @@ class basicStrings {
         // printArray(s);
 
         // Check Palidrome
-        String s = "tanay";
-        System.out.println(palindromeCheck(s));
-        s = "hannah";
-        System.out.println(palindromeCheck(s));
+        // String s = "tanay";
+        // System.out.println(palindromeCheck(s));
+        // s = "hannah";
+        // System.out.println(palindromeCheck(s));
+
+        // Largest odd number in a string
+        String s = "5347";
+        System.out.println(largeOddNum(s));
+        s = "0214638";
+        System.out.println(largeOddNum(s));
+        s = "0032579";
+        System.out.println(largeOddNum(s));
     }
 }
