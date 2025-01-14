@@ -21,12 +21,31 @@ void reverseString(vector<char> &s)
     }
 }
 
+bool palindromeCheck(string &s)
+{
+    int start = 0;
+    int end = s.size() - 1;
+
+    while (start < end)
+    {
+        if(s[start++]!=s[end--]) return false;
+    }
+
+    return true;
+}
+
 int main()
 {
-    vector<char> s = {'t', 'a', 'n', 'a', 'y'};
-    printArray(s);
-    reverseString(s);
-    printArray(s);
+    // Reverse a string
+    // vector<char> s = {'t', 'a', 'n', 'a', 'y'};
+    // printArray(s);
+    // reverseString(s);
+    // printArray(s);
 
+    // Check Palidrome
+    string s = "tanay";
+    cout<<palindromeCheck(s)<<endl;
+    s = "hannah";
+    cout<<palindromeCheck(s)<<endl;
     return 0;
 }
