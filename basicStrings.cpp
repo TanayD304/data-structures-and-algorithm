@@ -88,6 +88,21 @@ string longestCommonPrefix(vector<string> &str)
     return ans;
 }
 
+bool isomorphicString(string s, string t)
+{
+    vector<char> freqS(26, 0);
+    vector<char> freqT(26, 0);
+
+    for(int i=0;i<s.size();i++) {
+        if(freqS[(int)s[i]-97]!=freqT[(int)t[i]-97]) return false;
+
+        freqS[s[i] - 97] = i+1;
+        freqT[t[i] - 97] = i+1;
+    }
+
+    return true;
+}
+
 int main()
 {
     // Reverse a string
@@ -110,15 +125,25 @@ int main()
     // s = "0032579";
     // cout<<largeOddNum(s)<<endl;
 
-    vector<string> s = {"flowers",
-                        "flow",
-                        "fly",
-                        "flight"};
-    cout << longestCommonPrefix(s) << endl;
-    vector<string> s1 = {"dog",
-                         "cat",
-                         "animal",
-                         "monkey"};
-    cout << longestCommonPrefix(s1) << endl;
+    // Longest Common Prefix
+    // vector<string> s = {"flowers",
+    //                     "flow",
+    //                     "fly",
+    //                     "flight"};
+    // cout << longestCommonPrefix(s) << endl;
+    // vector<string> s1 = {"dog",
+    //                      "cat",
+    //                      "animal",
+    //                      "monkey"};
+    // cout << longestCommonPrefix(s1) << endl;
+
+    // Isomorphic String
+    string s = "add";
+    string t = "egg";
+    cout<<isomorphicString(s, t)<<endl;
+
+    s = "apple";
+    t = "bbnbm";
+    cout<<isomorphicString(s, t)<<endl;
     return 0;
 }

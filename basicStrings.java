@@ -70,6 +70,20 @@ class basicStrings {
         }
         return ans;
     }
+    public static boolean isomorphicString(String s, String t) {
+        int[] freqS = new int[26];
+        int[] freqT = new int[26];
+
+        for(int i=0;i<s.length();i++) {
+            if (freqS[(int) s.charAt(i) - 97] != freqT[(int) t.charAt(i) - 97])
+                return false;
+
+            freqS[(int)s.charAt(i) - 97] = i + 1;
+            freqT[(int)t.charAt(i) - 97] = i + 1;
+        }
+
+        return true;
+    }
     public static void main(String[] args) {
         // Reverse a string
         // Vector<Character> s = new Vector<>();
@@ -96,16 +110,27 @@ class basicStrings {
         // s = "0032579";
         // System.out.println(largeOddNum(s));
 
-        String[] str = new String[4];
-        str[0] = "flowers";
-        str[1] = "flow";
-        str[2] = "fly";
-        str[3] = "flight";
-        System.out.println(longestCommonPrefix(str));
-        str[0] = "dog";
-        str[1] = "cat";
-        str[2] = "monkey";
-        str[3] = "animal";
-        System.out.println(longestCommonPrefix(str));
+        // Longest Common Prefix
+        // String[] str = new String[4];
+        // str[0] = "flowers";
+        // str[1] = "flow";
+        // str[2] = "fly";
+        // str[3] = "flight";
+        // System.out.println(longestCommonPrefix(str));
+        // str[0] = "dog";
+        // str[1] = "cat";
+        // str[2] = "monkey";
+        // str[3] = "animal";
+        // System.out.println(longestCommonPrefix(str));
+
+        // Isomorphic String
+        String s = "add";
+        String t = "egg";
+
+        System.out.println(isomorphicString(s, t));
+
+        s = "apple";
+        t = "bbnbm";
+        System.out.println(isomorphicString(s, t));
     }
 }
