@@ -112,16 +112,17 @@ bool rotateString(string &s, string &goal)
 
 bool anagramStrings(string &s, string t)
 {
-    vector<int> freqS(26, 0);
-    vector<int> freqT(26, 0);
+    if (s.size() != t.size())
+        return false;
+    vector<int> freq(26, 0);
 
     for(int i=0;i<s.size();i++) {
-        freqS[s[i]-97]++;
-        freqT[t[i]-97]++;
+        freq[s[i]-97]++;
+        freq[t[i] - 97]--;
     }
 
     for(int i=0;i<26;i++) {
-        if(freqS[i]!=freqT[i]) return false;
+        if(freq[i]!=0) return false;
     }
 
     return true;

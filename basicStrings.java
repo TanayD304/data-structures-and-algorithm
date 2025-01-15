@@ -102,16 +102,16 @@ class basicStrings {
     }
 
     public static boolean anagramStrings(String s, String t) {
-        int[] freqS = new int[26];
-        int[] freqT = new int[26];
+        if(s.length()!=t.length()) return false;
+        int[] freq = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
-            freqS[s.charAt(i) - 97]++;
-            freqT[t.charAt(i) - 97]++;
+            freq[s.charAt(i) - 97]++;
+            freq[t.charAt(i) - 97]--;
         }
 
         for (int i = 0; i < 26; i++) {
-            if (freqS[i] != freqT[i]) {
+            if (freq[i] != 0) {
                 return false;
             }
         }
