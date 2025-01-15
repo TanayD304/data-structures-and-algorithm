@@ -2,6 +2,16 @@
 import java.util.*;
 import java.util.Arrays;
 
+class Pair{
+    public int first;
+    public char second;
+
+    Pair(int f, char s) {
+        first = f;
+        second = s;
+    }
+}
+
 class basicStrings {
 
     public static void swapChars(Vector<Character> s, int i, int j) {
@@ -11,6 +21,13 @@ class basicStrings {
     }
 
     public static void printArray(Vector<Character> s) {
+        for (int i = 0; i < s.size(); i++) {
+            System.out.print(s.get(i) + " ");
+        }
+        System.out.println();
+    }
+
+    public static void printArray(List<Character> s) {
         for (int i = 0; i < s.size(); i++) {
             System.out.print(s.get(i) + " ");
         }
@@ -119,6 +136,33 @@ class basicStrings {
         return true;
     }
 
+    public static List<Character> frequencySort(String s) {
+        Pair[] freq = new Pair[26];
+
+        for(int i=0;i<26;i++) {
+            freq[i] = new Pair(0, (char)(i));
+        }
+
+        for(int i=0;i<s.length();i++) {
+            freq[s.charAt(i)-97].first++;
+        }
+
+        Arrays.sort(freq, (p1, p2) -> {
+            if(p1.first!=p2.first) return p2.first-p1.first;
+            return p1.second-p2.second;
+        });
+
+        List<Character> ans = new ArrayList<>();
+        int i = 0;
+        while(i<26 && freq[i].first>0) {
+            ans.add((char)(freq[i].second + 97));
+            i++;
+        }
+
+        return ans;
+
+    }
+
     public static void main(String[] args) {
         // Reverse a string
         // Vector<Character> s = new Vector<>();
@@ -170,11 +214,15 @@ class basicStrings {
         // t = "adeac";
         // System.out.println(rotateString(s, t));
         // Valid Anagram
-        String s = "anagram";
-        String t = "naagram";
-        System.out.println(anagramStrings(s, t));
-        s = "cat";
-        t = "dog";
-        System.out.println(anagramStrings(s, t));
+        // String s = "anagram";
+        // String t = "naagram";
+        // System.out.println(anagramStrings(s, t));
+        // s = "cat";
+        // t = "dog";
+        // System.out.println(anagramStrings(s, t));
+        // Sort Characters by Frequency
+        // String s = "tree";
+        // List<Character> ans = frequencySort(s);
+        // printArray(ans);
     }
 }

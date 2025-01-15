@@ -128,6 +128,37 @@ bool anagramStrings(string &s, string t)
     return true;
 }
 
+bool comparator(pair<int, char> &p1, pair<int, char> &p2) {
+    if(p1.first>p2.first) return true;
+    if(p1.first<p2.first) return false;
+    return p1.second < p2.second;
+}
+
+vector<char> frequencySort(string &s)
+{
+    vector<pair<int, char>> freq(26);
+    for(int i=0;i<26;i++) {
+        freq[i].first = 0;
+        freq[i].second = i;
+    }
+
+    for(int i=0;i<s.size();i++) {
+        freq[s[i]-97].first++;
+    }
+
+    sort(freq.begin(), freq.end(), comparator);
+
+    int i = 0;
+    vector<char> ans;
+    while(i<26 && freq[i].first>0) {
+        ans.push_back(freq[i].second + 97);
+        i++;
+    }
+
+    return ans;
+
+}
+
 int main()
 {
     // Reverse a string
@@ -180,11 +211,16 @@ int main()
     // cout<<rotateString(s, t)<<endl;
 
     // Valid Anagram
-    string s = "anagram";
-    string t = "naagram";
-    cout<<anagramStrings(s, t)<<endl;
-    s = "cat";
-    t = "dog";
-    cout<<anagramStrings(s, t)<<endl;
+    // string s = "anagram";
+    // string t = "naagram";
+    // cout<<anagramStrings(s, t)<<endl;
+    // s = "cat";
+    // t = "dog";
+    // cout<<anagramStrings(s, t)<<endl;
+
+    // Sort Characters by Frequency
+    // string s = "tree";
+    // vector<char> ans = frequencySort(s);
+    // printArray(ans);
     return 0;
 }
