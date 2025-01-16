@@ -29,13 +29,28 @@ int removeDuplicates(vector<int> &nums)
     return indexToInsert;
 }
 
+int missingNumber(vector<int> &nums)
+{
+    int size = nums.size();
+
+    int ans = size;
+    for(int i=0;i<size;i++) {
+        ans = ans^nums[i]^i;
+    }
+
+    return ans;
+}
+
 int main()
 {
-    vector<int> nums = {-2, 2, 4, 4, 4, 4, 5, 5};
+    vector<int> nums = {1,3,6,4,2,5};
 
     // Remove Duplicates from sorted Array
-    printArray(nums);
-    cout<<removeDuplicates(nums)<<endl;
-    printArray(nums);
+    // printArray(nums);
+    // cout << removeDuplicates(nums) << endl;
+    // printArray(nums);
+
+    // Find Missing Number
+    cout<<missingNumber(nums)<<endl;
     return 0;
 }
