@@ -34,16 +34,36 @@ int missingNumber(vector<int> &nums)
     int size = nums.size();
 
     int ans = size;
-    for(int i=0;i<size;i++) {
-        ans = ans^nums[i]^i;
+    for (int i = 0; i < size; i++)
+    {
+        ans = ans ^ nums[i] ^ i;
     }
 
     return ans;
 }
 
+void moveZeroes(vector<int> &nums)
+{
+    int size = nums.size();
+
+    int posNonZero = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (nums[i] != 0)
+        {
+            nums[posNonZero++] = nums[i];
+        }
+    }
+
+    while (posNonZero < size)
+    {
+        nums[posNonZero++] = 0;
+    }
+}
+
 int main()
 {
-    vector<int> nums = {1,3,6,4,2,5};
+    vector<int> nums = {0, 20, 0, -20, 0, 30};
 
     // Remove Duplicates from sorted Array
     // printArray(nums);
@@ -51,6 +71,11 @@ int main()
     // printArray(nums);
 
     // Find Missing Number
-    cout<<missingNumber(nums)<<endl;
+    // cout << missingNumber(nums) << endl;
+
+    // Move Zeros to end
+    printArray(nums);
+    moveZeroes(nums);
+    printArray(nums);
     return 0;
 }
