@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 class logicBuilding {
 
     public static void printArray(int[] nums) {
@@ -34,6 +37,58 @@ class logicBuilding {
         return ans;
     }
 
+    public static int[] unionArray(int[] nums1, int[] nums2) {
+        int size1 = nums1.length;
+        int size2 = nums2.length;
+
+        int i = 0;
+        int j = 0;
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        while (i < size1 && j < size2) {
+            if (nums1[i] < nums2[j]) {
+                if (ans.isEmpty() || nums1[i] != ans.get(ans.size() - 1)) {
+                    ans.add(nums1[i]);
+                }
+                i++;
+            } else if (nums1[i] > nums2[j]) {
+                if (ans.isEmpty() || nums2[j] != ans.get(ans.size() - 1)) {
+                    ans.add(nums2[j]);
+                }
+                j++;
+            } else {
+                if (ans.isEmpty() || nums2[j] != ans.get(ans.size() - 1)) {
+                    ans.add(nums2[j]);
+                }
+                j++;
+                i++;
+            }
+        }
+
+        while (i < size1) {
+            if (ans.isEmpty() || nums1[i] != ans.get(ans.size() - 1)) {
+                ans.add(nums1[i]);
+            }
+            i++;
+        }
+
+        while (j < size2) {
+            if (ans.isEmpty() || nums2[j] != ans.get(ans.size() - 1)) {
+                ans.add(nums2[j]);
+            }
+            j++;
+        }
+
+        int[] ansExact = new int[ans.size()];
+
+        for(i=0;i<ans.size();i++) {
+            ansExact[i] = ans.get(i);
+        }
+
+        return ansExact;
+    }
+
     public static void moveZeroes(int[] nums) {
         int size = nums.length;
 
@@ -50,7 +105,8 @@ class logicBuilding {
     }
 
     public static void main(String[] args) {
-        int[] nums = {0, 0, 0, 1, 3, -2};
+        int[] nums1 = {1,2,3,4,5};
+        int[] nums2 = {1,2,7};
 
         // Remove Duplicates from sorted Array
         // printArray(nums);
@@ -61,8 +117,12 @@ class logicBuilding {
         // System.out.println(missingNumber(nums));
 
         // Move Zeros to end
-        printArray(nums);
-        moveZeroes(nums);
-        printArray(nums);
+        // printArray(nums);
+        // moveZeroes(nums);
+        // printArray(nums);
+
+        // Union of 2 Arrays
+        int[] ans = unionArray(nums1, nums2);
+        printArray(ans);
     }
 }

@@ -42,6 +42,58 @@ int missingNumber(vector<int> &nums)
     return ans;
 }
 
+vector<int> unionArray(vector<int> &nums1, vector<int> &nums2)
+{
+    int size1 = nums1.size();
+    int size2 = nums2.size();
+
+    int i = 0;
+    int j = 0;
+
+    vector<int> ans;
+
+    while(i<size1 && j<size2) {
+        if(nums1[i]<nums2[j]) {
+            if(ans.size()==0 || nums1[i]!=ans[ans.size()-1]) {
+                ans.push_back(nums1[i]);
+            }
+            i++;
+        }
+        else if (nums1[i] > nums2[j]) {
+            if (ans.size() == 0 || nums2[j] != ans[ans.size() - 1])
+            {
+                ans.push_back(nums2[j]);
+            }
+            j++;
+        } else {
+            if (ans.size() == 0 || nums2[j] != ans[ans.size() - 1])
+            {
+                ans.push_back(nums2[j]);
+            }
+            j++;
+            i++;
+        }
+    }
+
+    while(i<size1) {
+        if (ans.size() == 0 || nums1[i] != ans[ans.size() - 1])
+        {
+            ans.push_back(nums1[i]);
+        }
+        i++;
+    }
+
+    while(j<size2) {
+        if (ans.size() == 0 || nums2[j] != ans[ans.size() - 1])
+        {
+            ans.push_back(nums2[j]);
+        }
+        j++;
+    }
+
+    return ans;
+}
+
 void moveZeroes(vector<int> &nums)
 {
     int size = nums.size();
@@ -63,7 +115,8 @@ void moveZeroes(vector<int> &nums)
 
 int main()
 {
-    vector<int> nums = {0, 20, 0, -20, 0, 30};
+    vector<int> nums1 = {1, 2, 3, 4, 5};
+    vector<int> nums2 = {1, 2, 7};
 
     // Remove Duplicates from sorted Array
     // printArray(nums);
@@ -74,8 +127,12 @@ int main()
     // cout << missingNumber(nums) << endl;
 
     // Move Zeros to end
-    printArray(nums);
-    moveZeroes(nums);
-    printArray(nums);
+    // printArray(nums);
+    // moveZeroes(nums);
+    // printArray(nums);
+
+    // Union of 2 Arrays
+    vector<int> ans = unionArray(nums1, nums2);
+    printArray(ans);
     return 0;
 }
