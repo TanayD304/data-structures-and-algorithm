@@ -104,9 +104,36 @@ class logicBuilding {
         }
     }
 
+    public static int[] intersectionArray(int[] nums1, int[] nums2) {
+        int size1 = nums1.length;
+        int size2 = nums2.length;
+
+        int i = 0, j = 0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        while (i < size1 && j < size2) {
+            if (nums1[i] == nums2[j]) {
+                ans.add(nums1[i]);
+                i++;
+                j++;
+            } else if (nums1[i] < nums2[j]) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
+        int[] ansExact = new int[ans.size()];
+
+        for (i = 0; i < ans.size(); i++) {
+            ansExact[i] = ans.get(i);
+        }
+
+        return ansExact;
+    }
+
     public static void main(String[] args) {
-        int[] nums1 = {1,2,3,4,5};
-        int[] nums2 = {1,2,7};
+        // int[] nums1 = {1,2,,4,5};
+        // int[] nums2 = {1,2,7};
 
         // Remove Duplicates from sorted Array
         // printArray(nums);
@@ -122,7 +149,11 @@ class logicBuilding {
         // printArray(nums);
 
         // Union of 2 Arrays
-        int[] ans = unionArray(nums1, nums2);
-        printArray(ans);
+        // int[] ans = unionArray(nums1, nums2);
+        // printArray(ans);
+
+        // Intersection of 2 arrays
+        // int[] ans = intersectionArray(nums1, nums2);
+        // printArray(ans);
     }
 }
